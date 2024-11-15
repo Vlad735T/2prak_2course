@@ -1,0 +1,8 @@
+{
+    "name":"Scheme_first",
+    "tuples_limit":1000,
+    "structure":{
+        "tablica_fir":["column1","column2","column3","column4"],
+        "tablica_sec":["column1","column2"]
+    }
+}

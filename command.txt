@@ -1,0 +1,40 @@
+
+ТЕСТ:
+INSERT:
+tablica_fir:
+INSERT INTO tablica_fir VALUES ('potatoes','сorn','pepper','car') 
+INSERT INTO tablica_fir VALUES () НИЧЕГО НЕ ВСТАВЛЯЕМ
+INSERT INTO tablica_fir VALUES ('mouse','house','telephone')
+INSERT INTO tablica_fir VALUES ('cup','hair')
+INSERT INTO tablica_fir VALUES ('pen')
+/////////////////////////////////////////////////////////ОШИБКИ////////////////////////////////////////////////////////////
+INSERT INTO tablica_fir VALUES ('potatoes','сorn','pepper','car','DAY') БОЛЬШЕ ЧЕМ НУЖНО
+INSERT INTO tablica_third VALUES ('potatoes','pepper','car') ТАКОЙ ТАБЛИЦЫ НЕТУ
+TEST INTO tablica_third VALUES ('potatoes','pepper','car') ПЕРВОЕ СЛОВО НЕПРАВИЛЬНО
+INSERT TEST tablica_fir VALUES ('potatoes','pepper','car') НЕПРАВИЛЬНЫЙ ВВОД
+INSERT INTO tablica_fir TEST ('potatoes','pepper','car') НЕПРАВИЛЬНЫЙ ВВОД
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+tablica_sec:
+INSERT INTO tablica_sec VALUES ('potatoes','node') 
+INSERT INTO tablica_sec VALUES ('VLAD','IGOR') 
+
+
+DELETE:
+tablica_fir:
+DELETE FROM tablica_fir WHERE tablica_fir.column4 = 'car'
+DELETE FROM tablica_fir WHERE tablica_fir.column1 = 'test' ( ? )
+/////////////////////////////////////////////////////////ОШИБКИ////////////////////////////////////////////////////////////
+DELETE FROM tablica_fir WHERE tablica_sec.column1 = 'EMPTY' ТАБЛИЦЫ НЕ ОДИНАКОВЫ
+DELETE FROM tablica_fir WHERE tablica_fir.column5 = 'EMPTY' ТАКОЙ КОЛОНКИ НЕТУ
+DELETE tablica_fir WHERE tablica_fir.column1 = 'EMPTY' НЕПРАВИЛЬНЫЙ ВВОД
+DELETE TEST tablica_fir WHERE tablica_fir.column5 = 'EMPTY' НЕПРАВИЛЬНЫЙ ВВОД
+DELETE FROM tablica_fir TEST tablica_fir.column5 = 'EMPTY' НЕТУ WHERE
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+tablica_sec:
+DELETE FROM tablica_sec WHERE tablica_sec.column2 = 'jail'
+
+
+SELECT:
+SELECT tablica_fir.column1, tablica_sec.column1 FROM tablica_fir, tablica_sec WHERE tablica_fir.column1 = 'potatoes'
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
