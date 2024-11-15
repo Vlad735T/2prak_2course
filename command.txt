@@ -33,8 +33,11 @@ DELETE FROM tablica_fir TEST tablica_fir.column5 = 'EMPTY' НЕТУ WHERE
 tablica_sec:
 DELETE FROM tablica_sec WHERE tablica_sec.column2 = 'jail'
 
+INSERT INTO tablica_fir VALUES ('mouse','house','telephone')
+INSERT INTO tablica_sec VALUES ('potatoes','node') 
+
 
 SELECT:
-SELECT tablica_fir.column1, tablica_sec.column1 FROM tablica_fir, tablica_sec WHERE tablica_fir.column1 = 'potatoes'
+SELECT tablica_fir.column1, tablica_sec.column1 FROM tablica_fir, tablica_sec WHERE tablica_fir.column1 = 'mouse'
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

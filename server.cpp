@@ -329,11 +329,12 @@ bool check_cond_with_oper(string first_table, HASH<string> row1,
 
 }
 
+
+
 void condition_select(LinkedList<string> inputList, int client_socket){
     
     mutex SELECT_MUTEX;
     lock_guard<mutex> MUTEX_SELECT(SELECT_MUTEX);
-
 
     LinkedList<string> select_col_with_tables = get_table_for_select(inputList);
     LinkedList<string> select_tables = get_tables_before_where(inputList);
@@ -361,6 +362,7 @@ void condition_select(LinkedList<string> inputList, int client_socket){
         LinkedList<HASH<string>> table_fir = read_table(select_tables.get(0));
         LinkedList<HASH<string>> table_sec = read_table(select_tables.get(1));
 
+        string result = "";
         for (int i = 1; i < table_fir.size(); i++){
 
             HASH<string> row_first = table_fir.get(i);
@@ -369,15 +371,17 @@ void condition_select(LinkedList<string> inputList, int client_socket){
                 HASH<string> row_second = table_sec.get(j);
                 if (check_cond_with_oper(select_tables.get(0),row_first, select_tables.get(1), row_second, conditions, operators)){
 
-                    cout << table_fir.get(i).HGET(get_column(select_col_with_tables.get(0))) << " " 
-                    <<  table_sec.get(j).HGET(get_column(select_col_with_tables.get(1))) << endl;
+                    result += table_fir.get(i).HGET(get_column(select_col_with_tables.get(0))) + " " 
+                    +  table_sec.get(j).HGET(get_column(select_col_with_tables.get(1))) + "\n";
                 }
             }
         }
+        send(client_socket, result.c_str(), result.size(), 0);
     }else{
         throw runtime_error("Wrong amount of tables chosen!");
     }
 }
+
 
 
 
@@ -462,7 +466,6 @@ void condition_delete(LinkedList<string> inputList){
 }
 
 
-
 void MENU(auto client_input, auto client_socket){
 
     mutex for_menu;
@@ -494,8 +497,6 @@ void MENU(auto client_input, auto client_socket){
         send(client_socket, errorMessage.c_str(), errorMessage.size(), 0);
     }
 }
-
-
 
 sockaddr_in server_initialization (){
 
